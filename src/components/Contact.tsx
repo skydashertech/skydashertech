@@ -1,5 +1,6 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Mail, Phone, MapPin, Send, Clock, CheckCircle, MessageSquare } from 'lucide-react';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,9 +13,24 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  
+  const RECAPTCHA_SITE_KEY = '6Leihk8sAAAAAG_-n_bpQsRuLGHH-12p8SziLk7s';
+  const RECAPTCHA_SECRET_KEY = '6Leihk8sAAAAANtdd368hiTXVFMSyRpdXuRuV5rl';
+
+  const handleRecaptchaChange = useCallback((token: string | null) => {
+    setRecaptchaToken(token);
+  }, []);
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!recaptchaToken) {
+      alert('❌ Please complete the reCAPTCHA verification.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -27,7 +43,9 @@ const Contact = () => {
           to: "skydashertech@gmail.com",
           subject: "New Project Enquiry - SkyDasher Tech",
           body: `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.countryCode} ${formData.phone}\nCompany: ${formData.company}\nService: ${formData.service}\n\nMessage:\n${formData.message}`,
-          name: 'SkyDasher Tech'
+          name: 'SkyDasher Tech',
+          recaptchaToken: recaptchaToken,
+          recaptchaSecretKey: RECAPTCHA_SECRET_KEY
         }),
       });
 
@@ -42,6 +60,8 @@ const Contact = () => {
           service: '',
           message: ''
         });
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
       } else {
         throw new Error('Failed to send email');
       }
@@ -49,10 +69,12 @@ const Contact = () => {
     } catch (error) {
       console.error('Error processing form:', error);
       alert('❌ Sorry, there was an error. Please try again later or contact us directly via email: skydashertech@gmail.com');
+      setRecaptchaToken(null);
+      recaptchaRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData]);
+  }, [formData, recaptchaToken]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
@@ -61,7 +83,7 @@ const Contact = () => {
     }));
   }, []);
 
-  const isFormValid = formData.name && formData.email && formData.phone && formData.company && formData.service && formData.message;
+  const isFormValid = formData.name && formData.email && formData.phone && formData.company && formData.service && formData.message && recaptchaToken;
 
   return (
     <section id="contact" className="py-12 sm:py-16" style={{ backgroundColor: '#f8f8ff' }}>
@@ -541,6 +563,15 @@ const Contact = () => {
                   onChange={handleChange}
                   className="w-full px-3 py-2 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none text-sm sm:text-base"
                   placeholder="Tell us about your project requirements, timeline, and budget..."
+                />
+              </div>
+
+              <div className="flex justify-center">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey={RECAPTCHA_SITE_KEY}
+                  onChange={handleRecaptchaChange}
+                  theme="light"
                 />
               </div>
 
