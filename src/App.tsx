@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import WebDevelopment from './pages/WebDevelopment';
 import AppDevelopment from './pages/AppDevelopment';
 import AiDevelopment from './pages/AiDevelopment';
+import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/web-development" element={<WebDevelopment />} />
           <Route path="/app-development" element={<AppDevelopment />} />
           <Route path="/ai-development" element={<AiDevelopment />} />
+          <Route path="/thank-you" element={<ThankYou />} />
         </Routes>
       </div>
     </Router>

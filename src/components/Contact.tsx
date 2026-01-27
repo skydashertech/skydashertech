@@ -2,7 +2,10 @@ import React, { useState, useCallback, useRef } from 'react';
 import { Mail, Phone, MapPin, Send, Clock, CheckCircle, MessageSquare } from 'lucide-react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
+import { useNavigate } from 'react-router-dom';
+
 const Contact = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,7 +18,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  
+
   const RECAPTCHA_SITE_KEY = '6Leihk8sAAAAAG_-n_bpQsRuLGHH-12p8SziLk7s';
   const RECAPTCHA_SECRET_KEY = '6Leihk8sAAAAANtdd368hiTXVFMSyRpdXuRuV5rl';
 
@@ -25,7 +28,7 @@ const Contact = () => {
 
   const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!recaptchaToken) {
       alert('❌ Please complete the reCAPTCHA verification.');
       return;
@@ -50,7 +53,9 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert('✅ Thank you! Your inquiry has been sent to SkyDasher Tech. We will contact you soon.');
+        // Redirect to Thank You page
+        navigate('/thank-you');
+
         setFormData({
           name: '',
           email: '',
