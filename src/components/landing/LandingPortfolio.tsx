@@ -25,24 +25,13 @@ const LandingPortfolio: React.FC<LandingPortfolioProps> = ({ customProjects }) =
                             Showcasing our finest digital creations and success stories.
                         </p>
                     </div>
-                    <button
-                        className="hidden md:block px-6 py-3 border-2 rounded-full font-semibold transition-all duration-300 hover:text-white"
-                        style={{ borderColor: '#212720', color: '#212720' }}
-                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#212720'; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
-                    >
-                        View All Projects
-                    </button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {customProjects.map((project, index) => (
-                        <a
+                        <div
                             key={index}
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative rounded-3xl overflow-hidden aspect-[4/5] cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 block"
+                            className="group relative rounded-3xl overflow-hidden aspect-[4/5] shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 block"
                         >
                             <img
                                 src={project.image}
@@ -62,12 +51,8 @@ const LandingPortfolio: React.FC<LandingPortfolioProps> = ({ customProjects }) =
                                 <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
                                     {project.title}
                                 </h3>
-
-                                {/* <div className="flex items-center text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mt-4">
-                                    Visit Website <ExternalLink className="ml-2 h-4 w-4" />
-                                </div> */}
                             </div>
-                        </a>
+                        </div>
                     ))}
                 </div>
 

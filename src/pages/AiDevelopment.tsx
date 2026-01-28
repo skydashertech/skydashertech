@@ -1,14 +1,18 @@
-import React from 'react';
 import Header from '../components/Header';
 import LandingHero from '../components/landing/LandingHero';
 import About from '../components/About';
 import LandingServices from '../components/landing/LandingServices';
+import LandingPortfolio from '../components/landing/LandingPortfolio';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import WhatsAppFloater from '../components/WhatsAppFloater';
 import { Brain, Bot, Network, Cpu, MessageSquare, Database } from 'lucide-react';
 import video from '../assets/video.mp4';
+
+import findMyAIToolImg from '../assets/ai/Find My AI Tool.png';
+import vyroAIImg from '../assets/ai/AI Art Generator – Vyro AI.webp';
+import musiclyImg from '../assets/ai/Musicly – AI Music Generator.webp';
 
 const AiDevelopment = () => {
     const aiServices = [
@@ -50,6 +54,27 @@ const AiDevelopment = () => {
         }
     ];
 
+    const aiProjects = [
+        {
+            id: 1,
+            title: "Find My AI Tool",
+            image: findMyAIToolImg,
+            link: "https://findmyaitool.com",
+        },
+        {
+            id: 2,
+            title: "AI Art Generator – Vyro AI",
+            image: vyroAIImg,
+            link: "https://vyro.ai",
+        },
+        {
+            id: 3,
+            title: "Musicly – AI Music Generator",
+            image: musiclyImg,
+            link: "https://musicly.ai",
+        },
+    ];
+
     return (
         <>
             <Header />
@@ -66,10 +91,10 @@ const AiDevelopment = () => {
                         </>
                     }
                     subtitle="Empowering businesses with intelligent automation, machine learning, and cognitive computing technologies."
-                    noPortfolioSection={true}
                 />
                 <About />
                 <LandingServices customServices={aiServices} />
+                <LandingPortfolio customProjects={aiProjects} />
                 <Testimonials />
                 <Contact />
             </main>

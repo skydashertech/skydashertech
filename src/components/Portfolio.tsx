@@ -14,6 +14,11 @@ import klikomicsApp from "../assets/app-development/klikomics.webp";
 import autosnapApp from "../assets/app-development/autosnap-app.webp";
 import rentopApp from "../assets/app-development/rentop.webp";
 
+// Import AI project images
+import findMyAIToolImg from "../assets/ai/Find My AI Tool.png";
+import vyroAIImg from "../assets/ai/AI Art Generator – Vyro AI.webp";
+import musiclyImg from "../assets/ai/Musicly – AI Music Generator.webp";
+
 interface ProjectItem {
   id: number;
   title: string;
@@ -102,11 +107,33 @@ const Portfolio: React.FC<PortfolioProps> = ({ customProjects }) => {
       link: "https://play.google.com/store/apps/details?id=com.rentop&pcampaignid=web_share",
       category: "App Development",
     },
+    // AI Development Projects
+    {
+      id: 11,
+      title: "Find My AI Tool",
+      image: findMyAIToolImg,
+      link: "https://findmyaitool.com",
+      category: "AI Development",
+    },
+    {
+      id: 12,
+      title: "AI Art Generator – Vyro AI",
+      image: vyroAIImg,
+      link: "https://vyro.ai",
+      category: "AI Development",
+    },
+    {
+      id: 13,
+      title: "Musicly – AI Music Generator",
+      image: musiclyImg,
+      link: "https://musicly.ai",
+      category: "AI Development",
+    },
   ];
 
   const projects = customProjects || allProjects;
 
-  const filters = ["All", "Web Development", "App Development"];
+  const filters = ["All", "Web Development", "App Development", "AI Development"];
 
   const filteredProjects =
     activeFilter === "All"
@@ -166,12 +193,9 @@ const Portfolio: React.FC<PortfolioProps> = ({ customProjects }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredProjects.map((project, index) => (
-            <a
+            <div
               key={index}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-3xl overflow-hidden aspect-square cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 block"
+              className="group relative rounded-3xl overflow-hidden aspect-square shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 block"
             >
               <img
                 src={project.image}
@@ -194,12 +218,8 @@ const Portfolio: React.FC<PortfolioProps> = ({ customProjects }) => {
                 <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
                   {project.title}
                 </h3>
-
-                {/* <div className="flex items-center text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 mt-4">
-                    Visit Website <ExternalLink className="ml-2 h-4 w-4" />
-                </div> */}
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
