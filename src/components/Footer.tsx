@@ -130,14 +130,14 @@ const Footer = () => {
           <div className="text-gray-300 text-sm text-center sm:text-left">
             © {new Date().getFullYear()} SkyDasher Tech. All rights reserved.
           </div>
-          <div className="flex flex-wrap justify-center sm:justify-end space-x-4 text-xs sm:text-sm">
+          {/* <div className="flex flex-wrap justify-center sm:justify-end space-x-4 text-xs sm:text-sm">
             <a href="#" className="text-gray-300 transition-colors hover:text-white">
               Privacy Policy
             </a>
             <a href="#" className="text-gray-300 transition-colors hover:text-white">
               Terms of Service
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
