@@ -128,7 +128,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-4 sm:pt-6 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0">
           <div className="text-gray-300 text-sm text-center sm:text-left">
-            © 2023 SkyDasher Tech. All rights reserved.
+            © {new Date().getFullYear()} SkyDasher Tech. All rights reserved.
           </div>
           <div className="flex flex-wrap justify-center sm:justify-end space-x-4 text-xs sm:text-sm">
             <a href="#" className="text-gray-300 transition-colors hover:text-white">
