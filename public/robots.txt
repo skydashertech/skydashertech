@@ -1,9 +1,46 @@
+# Robots.txt for SkyDasher Tech
+# https://www.skydashertech.com
+
 User-agent: *
 Allow: /
+
+# Block admin and private paths
 Disallow: /admin/
 Disallow: /private/
 Disallow: /temp/
 Disallow: /cache/
+Disallow: /*.json$
+Disallow: /api/
 
-# Sitemap
-Sitemap: https://skydashertech.com/sitemap.xml
+# Allow key bots explicitly
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 5
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.skydashertech.com/sitemap.xml
