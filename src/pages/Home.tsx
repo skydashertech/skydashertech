@@ -8,23 +8,29 @@ import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import WhatsAppFloater from '../components/WhatsAppFloater';
+import FAQ from '../components/FAQ';
+import CaseStudies from '../components/CaseStudies';
+import Team from '../components/Team';
 
 const Home = () => {
-    return (
-        <>
-            <Header />
-            <main>
-                <Hero />
-                <Services />
-                <About />
-                <Journey />
-                <Portfolio />
-                <Contact />
-            </main>
-            <Footer />
-            <WhatsAppFloater />
-        </>
-    );
+      return (
+              <>
+                    <Header />
+                    <main>
+                            <Hero />
+                            <Services />
+                            <FAQ />
+                            <About />
+                            <CaseStudies />
+                            <Journey />
+                            <Portfolio />
+                            <Team />
+                            <Contact />
+                    </main>main>
+                    <Footer />
+                    <WhatsAppFloater />
+              </>>
+            );
 };
 
-export default Home;
+export default Home;</>
