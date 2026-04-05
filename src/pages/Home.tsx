@@ -13,22 +13,22 @@ import CaseStudies from '../components/CaseStudies';
 import Team from '../components/Team';
 
 export default function Home() {
-    return (
-          <>
-                <Header />
-                <main>
-                        <Hero />
-                        <Services />
-                        <FAQ />
-                        <About />
-                        <CaseStudies />
-                        <Journey />
-                        <Portfolio />
-                        <Team />
-                        <Contact />
-                </main>main>
-                <Footer />
-                <WhatsAppFloater />
-          </>>
-        );
-}</>
+  return (
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <FAQ />
+        <About />
+        <CaseStudies />
+        <Journey />
+        <Portfolio />
+        <Team />
+        <Contact />
+      </main>
+      <Footer />
+      <WhatsAppFloater />
+    </>
+  );
+}
