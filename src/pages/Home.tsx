@@ -1,7 +1,34 @@
-cd /path/to/your/skydashertech/repo
-git pull origin main
-# Edit the file or paste the corrected content
-# Then:
-git add src/pages/Home.tsx
-git commit -m "fix: Fix JSX syntax error in Home.tsx - remove duplicate </main><main> tags"
-git push origin main
+import React from 'react';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import Services from '../components/Services';
+import About from '../components/About';
+import Journey from '../components/Journey';
+import Portfolio from '../components/Portfolio';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
+import WhatsAppFloater from '../components/WhatsAppFloater';
+import FAQ from '../components/FAQ';
+import CaseStudies from '../components/CaseStudies';
+import Team from '../components/Team';
+
+export default function Home() {
+    return (
+          <>
+                <Header />
+                <main>
+                        <Hero />
+                        <Services />
+                        <FAQ />
+                        <About />
+                        <CaseStudies />
+                        <Journey />
+                        <Portfolio />
+                        <Team />
+                        <Contact />
+                </main>main>
+                <Footer />
+                <WhatsAppFloater />
+          </>>
+        );
+}</>
