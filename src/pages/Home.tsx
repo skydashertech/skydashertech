@@ -8,7 +8,6 @@ import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import WhatsAppFloater from '../components/WhatsAppFloater';
-import FAQ from '../components/FAQ';
 import CaseStudies from '../components/CaseStudies';
 import Team from '../components/Team';
 
@@ -19,7 +18,6 @@ export default function Home() {
       <main>
         <Hero />
         <Services />
-        <FAQ />
         <About />
         <CaseStudies />
         <Journey />
